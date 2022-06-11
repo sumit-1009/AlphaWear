@@ -6,8 +6,10 @@ const OrderSchema = new mongoose.Schema({
     paymentInfo: {type: String, default: ''},
     products:  {type: Object, required: true},
     address: {type: String, required: true},
+    transactionid: {type: String, default: ''},
     amount: {type: Number, required: true},
     status: {type: String, default: 'Initiated', required: true},
+    deliveryStatus: {type: String, default: 'Unshipped', required: true},
   }, {timestamps: true});
 
   mongoose.models = {}
