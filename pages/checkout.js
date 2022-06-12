@@ -20,12 +20,44 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
   const [user, setUser] = useState({value: null})
 
   useEffect(() =>{
-    const user = JSON.parse(localStorage.getItem('myuser'))
-    if(user && user.token){
-      setUser(user)
-      setEmail(user.email)
+    const myuser = JSON.parse(localStorage.getItem('myuser'))
+    if(myuser && myuser.token){
+      setUser(myuser)
+      setEmail(myuser.email)
+      fetchData(myuser.token)
     }
   }, [])
+
+  const fetchData = async(token) =>{
+    let data = { token: token }
+    let a = await fetch(`http://localhost:3000/api/getuser`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    let res = await a.json()
+    setName(res.name)
+    setAddress(res.address)
+    setPincode(res.pincode)
+    setPhone(res.phone)
+    getPincode(res.pincode)
+  }
+
+  const getPincode = async(pin) =>{
+    let pins = await fetch(`http://localhost:3000/api/pincode`)
+        let pinJson = await pins.json()
+        if(Object.keys(pinJson).includes(pin)){
+          setCity(pinJson[pin][0])
+          setState(pinJson[pin][1])
+        }
+        else{
+          setCity('')
+          setState('')
+        }
+  }
   const handleChange = async(e) =>{
     
     if(e.target.name == 'name'){
@@ -43,16 +75,7 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
     else if(e.target.name == 'pincode'){
       setPincode(e.target.value)
       if(e.target.value.length == 6){
-        let pins = await fetch(`http://localhost:3000/api/pincode`)
-        let pinJson = await pins.json()
-        if(Object.keys(pinJson).includes(e.target.value)){
-          setCity(pinJson[e.target.value][0])
-          setState(pinJson[e.target.value][1])
-        }
-        else{
-          setCity('')
-          setState('')
-        }
+        getPincode(e.target.value)
       }
       else{
         setCity('')
@@ -93,7 +116,6 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
 
       let txnRes = await a.json()
       if(txnRes.success){
-      console.log(txnRes)
       let txnToken = txnRes.txnToken
 
     var config = {

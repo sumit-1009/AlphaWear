@@ -52,7 +52,6 @@ function MyApp({ Component, pageProps }) {
       subt += myCart[keys[i]].price *  myCart[keys[i]].qty;
     }
     setSubTotal(subt)
-    console.log(subTotal)
   }
 
   const addToCart = (itemCode, qty, price, name, size, variant)=>{
