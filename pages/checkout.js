@@ -59,7 +59,6 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
         }
   }
   const handleChange = async(e) =>{
-    
     if(e.target.name == 'name'){
       setName(e.target.value)
     } 
@@ -174,7 +173,9 @@ const Checkout = ({ cart, clearCart, subTotal, addToCart, removeFromCart }) => {
           draggable
           pauseOnHover
           />
-      <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
+      <Head>
+        <title>AlphaWear.com/Checkout</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
       <Script type="application/javascript" crossorigin="anonymous" src={`https://securegw.paytm.in/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_MID}.js`} />
       <h1 className='font-bold text-3xl my-8 text-center'>Checkout</h1>
       <h2 className='mx-10 font-semibold text-xl'>1. Delivery Details</h2>

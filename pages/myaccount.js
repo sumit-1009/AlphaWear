@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from 'next/head'
 
 const Myaccount = () => {
   const [name, setName] = useState('')
@@ -139,6 +140,9 @@ const Myaccount = () => {
   }
   return (
     <div className='container mx-auto my-9 min-h-screen'>
+      <Head>
+        <title>AlphaWear.com/MyAccount</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
       <ToastContainer
           position="top-left"
           autoClose={2000}

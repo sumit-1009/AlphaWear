@@ -2,13 +2,16 @@ import React from 'react'
 import Link from 'next/link'
 import mongoose from "mongoose";
 import Product from "../models/Product"
-
+import Head from 'next/head'
 
 const Hoodies = ({products}) => {
   return (
     <div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 md:py-20 py-10 mx-auto min-h-screen">
+        <Head>
+        <title>AlphaWear.com/Hoodies</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
           <div className="flex flex-wrap -m-4 justify-center">
           {Object.keys(products).length === 0 && <p className='font-bold text-xl'>Sorry all the Hoodies are currently out of stock. New Stock coming soon. Stay Tuned</p> }
           {Object.keys(products).map((item)=>{

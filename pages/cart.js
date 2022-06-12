@@ -2,10 +2,14 @@ import React from 'react'
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import Link from 'next/link'
 import { BsFillBagCheckFill } from 'react-icons/bs'
+import Head from 'next/head'
 
 const Cart = ({cart, addToCart, removeFromCart, clearCart, subTotal}) => {
     return (
         <div className=' min-h-screen px-10'>
+        <Head>
+        <title>AlphaWear.com/Cart</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
                 <h2 className='font-bold text-xl text-center mt-10'>Shopping Cart</h2>
                 <ol className='list-decimal font-semibold'>
                     {Object.keys(cart).length == 0 && <div>

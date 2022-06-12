@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import mongoose from "mongoose";
 import Product from "../models/Product"
+import Head from 'next/head'
 
 
 const Tshirts = ({products}) => {
@@ -9,6 +10,9 @@ const Tshirts = ({products}) => {
     <div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 md:py-20 py-10 mx-auto min-h-screen">
+        <Head>
+        <title>AlphaWear.com/Tshirts</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
           <div className="flex flex-wrap -m-4 justify-center">
           {Object.keys(products).map((item)=>{
               return<Link passHref={true} key={products[item]._id} href={`/product/${products[item].slug}`}><div className="lg:w-1/5 md:w-1/2 p-4 w-1/2 cursor-pointer shadow-lg">

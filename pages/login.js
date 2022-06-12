@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
+import Head from 'next/head'
 
 const Login = () => {
   const router = useRouter()
@@ -66,7 +67,10 @@ const Login = () => {
     }
   }
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-start justify-center pt-28 px-4 sm:px-6 lg:px-8 min-h-screen">
+      <Head>
+        <title>AlphaWear.com/Login</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
       <ToastContainer
         position="bottom-center"
         autoClose={1000}

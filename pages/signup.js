@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from 'next/head'
 
 const Signup = () => {
     const router = useRouter()
@@ -12,7 +13,7 @@ const Signup = () => {
     const [password, setPassword] = useState('')
 
     useEffect(() =>{
-        if(localStorage.getItem('token')){
+        if(localStorage.getItem('myuser')){
           router.push('/')
         }
       })
@@ -54,7 +55,7 @@ const Signup = () => {
           });
     }
     return (
-        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen flex items-start justify-center pt-28 px-4 sm:px-6 lg:px-8">
             <ToastContainer
                 position="bottom-center"
                 autoClose={1000}
@@ -67,6 +68,9 @@ const Signup = () => {
                 pauseOnHover
              />
             <div className="max-w-md w-full space-y-8">
+            <Head>
+        <title>AlphaWear.com/SignUp</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
                 <div>
                     <img className="mx-auto h-12 w-auto" src="/logo2.jpg" alt="Workflow" />
                     <h2 className="mt-6 text-center text-3xl font-bold text-blue-700">Sign Up for an account</h2>

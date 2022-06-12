@@ -6,6 +6,7 @@ import Product from "../../models/Product"
 import Error from 'next/error'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from 'next/head'
 
 const Post = ({ buyNow, addToCart, product, variants, error }) => {
   const router = useRouter()
@@ -79,6 +80,9 @@ const Post = ({ buyNow, addToCart, product, variants, error }) => {
         pauseOnHover
       />
       <div className="container px-5 py-16 mx-auto min-h-screen">
+      <Head>
+        <title>AlphaWear.com/Product</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/></Head>
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-24 object-cover object-center rounded" src={product.img} />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
